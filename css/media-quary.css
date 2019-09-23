@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* Mobile CSS */
+html{
+  font-size:10px; 
+}
+body{
+  background-color: yellow;
+}
+
+/* Tablet, Laptop CSS */
+@media screen and (min-width:50em){
+  html{
+    font-size:14px; 
+  }
+  body{
+    background-color: pink;
+  }
+}
+
+/* Wide Screen CSS */
+@media screen and (min-width:64em){
+  html{
+    font-size:20px; 
+  }
+  body{
+    background-color: skyblue;
+  }
+}
