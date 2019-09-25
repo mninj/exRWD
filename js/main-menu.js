@@ -7,6 +7,7 @@ var nav = $('.navigation');
 var btn = $('.btn-menubar');
 var menu = $('.menu');
 var lists = $('.menu-list');
+var slogan = $('.slogan-heading');
 
 if(viewport.matches){  
   items.addClass('icon-plus');
@@ -14,6 +15,7 @@ if(viewport.matches){
   items.attr('aria-haspopup', 'true');
   items.attr('aria-pressed', 'false');
   items.attr('aria-expanded', 'false');
+  slogan.addClass('a11y-hidden');
   
   btn.on('click', function(e){
     e.preventDefault();

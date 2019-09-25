@@ -29,7 +29,7 @@ a{
 body{
   color: #181818;
 }
-.rwd-img{
+.responsive{
   max-width: 100%;
   height: auto;
 }
@@ -38,24 +38,13 @@ body{
   flex-wrap: wrap;
   flex-direction: row;
 }
-.container > *, .main-content > *{
-  /* flex: 0 1 100%; */
+/* .container > *, .main-content > *{
   width: 100%;
-}
-.news{
-  background: lime;
-}
-.board{
-  background: teal;
-}
-.favorite-site{
-  background: gold;
-}
-.twitter{
-  background: skyblue;
-}
+} */
 .footer{
-  background: pink;
+  background: #988574;
+  color: #fff;
+
 }
 /* logo */
 .logo{
@@ -110,6 +99,7 @@ body{
 }
 .main-content [class$="summary"]{
   line-height: 1.5;
+  text-align: justify;
 }
 /* Recommend Book */
 .recommend-book-cover{
@@ -139,8 +129,92 @@ body{
   font-size: 1.5em;
   color: #abd375;
 }
+/* news */
+.news-date{
+  display: block;
+  text-align: right;
+}
+/* board */
+.board{
+  position: relative;
+}
+.board-list{
+  list-style: none;
+  padding-left: 0;
+}
+.board-list li{
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+}
+.board-list a{
+  width: calc(100% - 7em);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: auto;
+}
+.board-more{
+  position: absolute;
+  top: 1em;
+  right: 0;
+  padding: 0.5em;
+}
+.board-more::before{
+  color: hsla(110, 30%, 50%, 1);
+}
+/* favorite site */
+.favorite-site-list{
+  list-style: none;
+  counter-reset: initial;
+  padding-left: 1em;
+}
+.favorite-site-list li{
+  counter-increment: number;
+  margin: 0.85em 0;
+}
+.favorite-site-list li::before{
+  content: counter(number);
+  background: #eea60a;
+  color: #fff;
+  padding: 0 0.5em;
+  border-radius: 50%;
+}
+/* twitter */
+.twitter{
+  position: relative;
+  padding-right: 20%;
+}
+.twitter-user-info{
+  display: flex;
+}
+.twitter-user-name, .twitter-user-id{
+  margin-left: 0;
+}
+.twitter-profile{
+  width: 20%;
+  margin-left: 0;
+  margin-right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+.twitter-thumbnail{
+  border: 1px solid #38302e;
+  padding: 0.5em;
+  border-radius: 50%;
+}
+.address{
+  font-style: normal;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+}
 /* Mobile Style */
 @media screen and (max-width: 62.5em){
+  .header, .navigation, .main-content, .footer{
+    width: 100%;
+  }
   .header{
     background: #38302e;
     padding-bottom: 1.5em;
@@ -192,9 +266,6 @@ body{
     height: 100%;
   }
   /* Mobile main menu button */
-  .is-act{
-   
-  }
   .btn-menubar{
     cursor: pointer;
     background: transparent;
@@ -248,18 +319,21 @@ body{
     transform: translateX(-100%);
     list-style: none;
     background: rgba(0,0,0,0.85);
-    color: #fff;
+    color: rgba(255,255,255,0);
     margin: 0;
     position: fixed;
     top: 0;
     left: 0;
-    width: 70vw;
+    width: 0 !important;
     height: 100vh;
     padding: 1.5em 1em 1.5em 40px;
-    transition: all 600ms;
+    transition: all 200ms;
+    overflow: hidden;
   }
   .is-act .menu{
+    color: rgba(255,255,255,1);
     transform: none;
+    width: 70vw !important;
   }
   .menu-list{
     margin: 1em 0;
@@ -273,6 +347,28 @@ body{
   }
   .sub-menu li{
     margin: 0.5em 0;
+  }
+  /* main content */
+  .main-content{
+    padding: 0 20px;
+  }
+  .recommend-book, .news, .board, .favorite-site, .twitter{
+    width: 100%;
+  }
+  .twitter{
+    margin-bottom: 1em;
+  }
+  /* slogan */
+  .slogan{
+    padding: 0 20px;
+  }
+  /* footer */
+  .footer{
+    padding: 2em 20px;
+  }
+  .address span{
+    display: block;
+    line-height: 2em;
   }
 }
 
@@ -340,7 +436,7 @@ body{
     background: #988574;
     color: #fff;
   }
-  .header, .menu, .main-content, .footer{
+  .header, .menu, .main-content, .slogan{
     /* flex: 0 1 1000px; */
     width: 1000px;
     /* margin: 0 auto; */
@@ -356,6 +452,7 @@ body{
   .favorite-site{
     width: calc(65px * 3 + 20px * 2);
     margin-left: 20px;
+    order: 1;
   }
   .twitter{
     width: calc(65px * 5 + 20px * 4);
@@ -407,5 +504,46 @@ body{
   }
   .sub-menu a:hover, .sub-menu a:focus{
     color: #ff0;
+  }
+  /* main content */
+  .main-content{
+    margin-bottom: 1em;
+  }
+  /* twitter */
+  .twitter{
+    padding-right: 80px;
+  }
+  /* slogan */
+  .slogan{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .slogan-heading{
+    margin: 0;
+    width: 110px;
+    height: 83px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -25px;
+  }
+  .slogan-heading::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(./images/coffee.png) no-repeat;
+  }
+  .slogan-content{
+    width: calc(100% - 250px);
+  }
+  /* footer */
+  .footer{
+    width: 100%;
+    padding: 2em 0;
+    text-align: center;
   }
 }
