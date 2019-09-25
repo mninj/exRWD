@@ -1,0 +1,7 @@
+git add .
+
+git status
+
+git commit -m "수정"
+
+git push origin -u master
