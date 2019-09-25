@@ -2,13 +2,13 @@ var viewport = window.matchMedia('(max-width:999px)');
 $(window).resize(function(){
   location.reload();
 });
-if(viewport.matches){
-  var nav = $('.navigation');
-  var btn = $('.btn-menubar');
-  var menu = $('.menu');
-  var lists = $('.menu-list');
-  var items = $('.menu-item');
-  
+var items = $('.menu-item');
+var nav = $('.navigation');
+var btn = $('.btn-menubar');
+var menu = $('.menu');
+var lists = $('.menu-list');
+
+if(viewport.matches){  
   items.addClass('icon-plus');
   items.attr('role', 'button');
   items.attr('aria-haspopup', 'true');
@@ -43,5 +43,11 @@ if(viewport.matches){
   });
   menu.on('focusout', function(){
     nav.removeClass('is-act');
+  });
+}else{
+  items.attr('role', 'presentation');
+  items.attr('tabindex', '-1');
+  items.on('click', function(e){
+    e.preventDefault();
   });
 }
